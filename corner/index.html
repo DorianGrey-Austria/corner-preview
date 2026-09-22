@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/png" href="shared-images/favicon-180.png">
+<title>CORNER Scheibbs – Website-Entwürfe</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Karla:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #F7F4EE;
+    --card: #FFFFFF;
+    --ink: #1A1A1A;
+    --muted: #6B6358;
+    --line: #DDD5C6;
+    --red: #E1202E;
+    --red-d: #B5121E;
+    --yellow: #E4EF00;
+    --radius: 16px;
+    --space: clamp(16px, 4vw, 40px);
+    --ease: 180ms ease;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font: 400 17px/1.6 Karla, system-ui, sans-serif;
+  }
+  /* CORNER CI-Signatur */
+  .ci-stripe { display: block; height: 7px; background: linear-gradient(90deg, #E4EF00 0 38%, #E1202E 38% 76%, #1A1A1A 76%); }
+  .wrap { max-width: 1240px; margin: 0 auto; padding: var(--space); }
+  header { padding-top: clamp(24px, 5vw, 64px); padding-bottom: clamp(20px, 3vw, 40px); }
+  .logo { line-height: 0; }
+  .logo img { display: block; height: clamp(68px, 9vw, 96px); width: auto; }
+  .eyebrow { margin: 28px 0 8px; font-size: 12px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--muted); }
+  h1 { margin: 0; font: 700 clamp(32px, 5.5vw, 60px)/1.08 Fraunces, serif; max-width: 18ch; }
+  .lead { margin: 16px 0 0; max-width: 62ch; color: var(--muted); }
+  .legend { margin: 18px 0 0; display: flex; flex-wrap: wrap; gap: 8px 18px; font-size: 13px; color: var(--muted); }
+  .legend span::before { content: ""; display: inline-block; width: 12px; height: 12px; border-radius: 50%; margin-right: 6px; vertical-align: -1px; }
+  .legend .l-y::before { background: var(--yellow); }
+  .legend .l-r::before { background: var(--red); }
+  .legend .l-k::before { background: var(--ink); }
+  .grid {
+    list-style: none; margin: 0; padding: 0;
+    display: grid; gap: clamp(16px, 2.5vw, 28px);
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 360px), 1fr));
+  }
+  .card {
+    display: flex; flex-direction: column; height: 100%;
+    background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+    overflow: hidden; color: inherit;
+    transition: transform var(--ease), box-shadow var(--ease);
+  }
+  .card:hover { transform: translateY(-3px); box-shadow: 0 14px 34px rgba(33, 29, 24, .12); }
+  .card .shot { display: block; line-height: 0; }
+  .card .shot:focus-visible { outline: 3px solid var(--red); outline-offset: -3px; }
+  .card img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover; object-position: top; border-bottom: 1px solid var(--line); }
+  .body { display: flex; flex-direction: column; gap: 8px; flex: 1; padding: 20px 22px 22px; }
+  .top { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+  .tag { padding: 3px 9px; border-radius: 4px; background: var(--yellow); font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--ink); }
+  .swatch { display: flex; gap: 5px; }
+  .swatch i { display: block; width: 16px; height: 16px; border-radius: 50%; border: 1px solid rgba(0, 0, 0, .18); }
+  h2 { margin: 2px 0 0; font: 700 25px/1.2 Fraunces, serif; }
+  .body > p { margin: 0; color: var(--muted); font-size: 16px; }
+  .specs {
+    margin: 8px 0 0; padding: 12px 0 0; border-top: 1px dashed var(--line);
+    display: grid; grid-template-columns: auto 1fr; gap: 5px 14px; font-size: 14px; line-height: 1.45;
+  }
+  .specs dt { margin: 0; font-weight: 700; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--red-d); padding-top: 3px; white-space: nowrap; }
+  .specs dd { margin: 0; color: var(--ink); }
+  .open { margin-top: auto; padding-top: 14px; display: flex; flex-wrap: wrap; gap: 8px; }
+  .open a { flex: 1 1 auto; min-height: 44px; display: inline-flex; align-items: center; justify-content: center; padding: 8px 12px; border-radius: 8px; font-weight: 700; font-size: 15px; text-decoration: none; color: var(--ink); background: var(--yellow); }
+  .open a:nth-child(2), .open a:nth-child(3) { background: var(--ink); color: #fff; }
+  .open a:hover { background: var(--red); color: #fff; }
+  .open a:focus-visible { outline: 3px solid var(--red); outline-offset: 2px; }
+  footer { background: var(--ink); color: #CFC8BC; font-size: 14px; }
+  footer .wrap { padding-top: 36px; padding-bottom: 36px; }
+  .ci-foot { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; padding-bottom: 22px; margin-bottom: 20px; border-bottom: 1px solid rgba(255, 255, 255, .16); }
+  .ci-foot img { height: 74px; width: auto; display: block; }
+  .ci-foot .ci-tag { margin: 0; font-size: 12.5px; letter-spacing: .16em; text-transform: uppercase; font-weight: 700; color: #fff; line-height: 1.7; max-width: 34ch; }
+  .ci-foot .ci-tag b { color: var(--yellow); font-weight: 700; }
+  footer p { margin: 0; }
+  @media (max-width: 600px) { .ci-foot img { height: 60px; } .specs { grid-template-columns: 1fr; gap: 2px 0; } .specs dd { margin-bottom: 6px; } }
+  @media (prefers-reduced-motion: reduce) { .card { transition: none; } .card:hover { transform: none; } }
+</style>
+</head>
+<body>
+  <div class="ci-stripe" aria-hidden="true"></div>
+  <header class="wrap">
+    <div class="logo"><img src="shared-images/corner-logo.svg" width="223" height="96" alt="CORNER Mode.Schuh.Treff – Logo"></div>
+    <p class="eyebrow">Mode.Schuh.Treff &amp; Piercing Avalon · Scheibbs</p>
+    <h1>Sechs Richtungen, ein CORNER.</h1>
+    <p class="lead">Jeder Entwurf hat sein eigenes Layout, seine eigene Schrift und seinen eigenen Wortlaut – alle mit dem Original-Logo, der Drei-Streifen-Signatur und den CORNER-Farben. Jede Variante ist eine komplette Website: Startseite plus eigene, suchmaschinenoptimierte Unterseiten für <b>Mode</b> und <b>Piercing Avalon</b>, erreichbar über die beiden Hauptmenüpunkte. Einfach anklicken, die Seiten funktionieren auch am Handy.</p>
+    <p class="legend"><span class="l-y">Gelb</span><span class="l-r">Rot</span><span class="l-k">Schwarz</span> – die drei Farbpunkte je Karte zeigen Hintergrund, Akzent und Schriftfarbe der Variante.</p>
+  </header>
+
+  <main class="wrap">
+    <ul class="grid">
+      <li>
+        <div class="card"><a class="shot" href="variante-a/">
+          <img src="assets/preview-a-ci.jpg" alt="Vorschau Variante A: helle Editorial-Seite mit großer Serifen-Überschrift" width="1440" height="900" loading="lazy"></a>
+          <div class="body">
+            <div class="top"><span class="tag">Variante A</span><span class="swatch" aria-hidden="true"><i style="background:#F7F4EE"></i><i style="background:#E1202E"></i><i style="background:#211D18"></i></span></div>
+            <h2>Editorial</h2>
+            <p>Hell und ruhig wie ein Modemagazin: große Serifen-Typografie, viel Weißraum, Mode und Piercing als zwei gleich große Kapitel.</p>
+            <dl class="specs">
+              <dt>Stimmung</dt><dd>Ruhig, hell, kuratiert</dd>
+              <dt>Für wen</dt><dd>Kundschaft, die in Ruhe stöbert und Beratung schätzt</dd>
+              <dt>Schrift</dt><dd>Fraunces (Serife) + Karla</dd>
+              <dt>Eigenheit</dt><dd>Magazin-Rhythmus, Facebook-Aktionen als eigene Rubrik</dd>
+            </dl>
+            <nav class="open" aria-label="Seiten der Variante A"><a href="variante-a/">Startseite →</a><a href="variante-a/mode.html">Mode →</a><a href="variante-a/piercing.html">Piercing →</a></nav>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="card"><a class="shot" href="variante-b/">
+          <img src="assets/preview-b-ci.jpg" alt="Vorschau Variante B: dunkle, geteilte Startseite mit Mode links und Piercing rechts, Original-Logo im Kopf" width="1440" height="900" loading="lazy"></a>
+          <div class="body">
+            <div class="top"><span class="tag">Variante B</span><span class="swatch" aria-hidden="true"><i style="background:#0F1014"></i><i style="background:#E1202E"></i><i style="background:#ECEAE4"></i></span></div>
+            <h2>Urban Split · Version 3</h2>
+            <p>Dunkel und plakativ: geteilte Startseite, Mode links, Piercing rechts, durchgehend in den Logo-Farben.</p>
+            <dl class="specs">
+              <dt>Stimmung</dt><dd>Dunkel, städtisch, plakativ</dd>
+              <dt>Für wen</dt><dd>Jüngeres Publikum und Piercing-Kundschaft</dd>
+              <dt>Schrift</dt><dd>Archivo + Inter</dd>
+              <dt>Eigenheit</dt><dd>Split-Hero, Marken-Laufband, Stats-Leiste</dd>
+            </dl>
+            <nav class="open" aria-label="Seiten der Variante B"><a href="variante-b/">Startseite →</a><a href="variante-b/mode.html">Mode →</a><a href="variante-b/piercing.html">Piercing →</a></nav>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="card"><a class="shot" href="variante-c/">
+          <img src="assets/preview-c-ci.jpg" alt="Vorschau Variante C: farbige Kacheln mit Bildern, Öffnungszeiten und Angeboten" width="1440" height="900" loading="lazy"></a>
+          <div class="body">
+            <div class="top"><span class="tag">Variante C</span><span class="swatch" aria-hidden="true"><i style="background:#FFF8F0"></i><i style="background:#E4EF00"></i><i style="background:#1A1A1A"></i></span></div>
+            <h2>Bento</h2>
+            <p>Bunt und übersichtlich: Inhalte in farbigen Kacheln – Öffnungszeiten, Angebote und beide Bereiche auf einen Blick.</p>
+            <dl class="specs">
+              <dt>Stimmung</dt><dd>Freundlich, knapp, alles auf einen Blick</dd>
+              <dt>Für wen</dt><dd>Schnellentschlossene: Zeiten, Telefon und Angebote sofort sichtbar</dd>
+              <dt>Schrift</dt><dd>Bricolage Grotesque + Figtree</dd>
+              <dt>Eigenheit</dt><dd>Kachel-Raster wie ein Handy-Homescreen, kurze Sätze</dd>
+            </dl>
+            <nav class="open" aria-label="Seiten der Variante C"><a href="variante-c/">Startseite →</a><a href="variante-c/mode.html">Mode →</a><a href="variante-c/piercing.html">Piercing →</a></nav>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="card"><a class="shot" href="variante-d/">
+          <img src="assets/preview-d-ci.jpg" alt="Vorschau Variante D: umrahmtes Schild mit großer Schrift „Zwei Adressen. Ein Eck.“ in Schwarz und Logo-Rot" width="1440" height="900" loading="lazy"></a>
+          <div class="body">
+            <div class="top"><span class="tag">Variante D</span><span class="swatch" aria-hidden="true"><i style="background:#EDEFEA"></i><i style="background:#E1202E"></i><i style="background:#1A1A1A"></i></span></div>
+            <h2>Emaille</h2>
+            <p>Wie ein altes Emailleschild: gerahmte Flächen in Schwarz und Logo-Rot, kräftige Blockschrift, Mode und Piercing als zwei große Bildtafeln.</p>
+            <dl class="specs">
+              <dt>Stimmung</dt><dd>Kernig, plakativ, ein Hauch Retro</dd>
+              <dt>Für wen</dt><dd>Stammkundschaft und alle, die Handwerk und Bodenständigkeit schätzen</dd>
+              <dt>Schrift</dt><dd>Anton (Blockschrift) + DM Sans</dd>
+              <dt>Eigenheit</dt><dd>Schild-Sprache in kurzen Sätzen, seitlich wischbare Galerien</dd>
+            </dl>
+            <nav class="open" aria-label="Seiten der Variante D"><a href="variante-d/">Startseite →</a><a href="variante-d/mode.html">Mode →</a><a href="variante-d/piercing.html">Piercing →</a></nav>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="card"><a class="shot" href="variante-e/">
+          <img src="assets/preview-e-ci.jpg" alt="Vorschau Variante E: elegante, warme Boutique-Seite mit organischen Formen" width="1440" height="900" loading="lazy"></a>
+          <div class="body">
+            <div class="top"><span class="tag">Variante E</span><span class="swatch" aria-hidden="true"><i style="background:#F4EFE6"></i><i style="background:#E1202E"></i><i style="background:#1A1A1A"></i></span></div>
+            <h2>Boutique Bloom</h2>
+            <p>Warm, persönlich und hochwertig: weiche Formen, Editorial-Typografie und Mode sowie Piercing als zwei gleichwertige Erlebniswelten.</p>
+            <dl class="specs">
+              <dt>Stimmung</dt><dd>Warm, weich, hochwertig</dd>
+              <dt>Für wen</dt><dd>Boutique-Publikum mit Sinn für Details und persönliche Beratung</dd>
+              <dt>Schrift</dt><dd>Playfair Display + DM Sans</dd>
+              <dt>Eigenheit</dt><dd>Organische Formen, große Store-Fotos, ruhiger Lesefluss</dd>
+            </dl>
+            <nav class="open" aria-label="Seiten der Variante E"><a href="variante-e/">Startseite →</a><a href="variante-e/mode.html">Mode →</a><a href="variante-e/piercing.html">Piercing →</a></nav>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="card"><a class="shot" href="variante-f/">
+          <img src="assets/preview-f-ci.jpg" alt="Vorschau Variante F: plakative Seite mit starken Farben und großer Typografie" width="1440" height="900" loading="lazy"></a>
+          <div class="body">
+            <div class="top"><span class="tag">Variante F</span><span class="swatch" aria-hidden="true"><i style="background:#F4F0E7"></i><i style="background:#E4EF00"></i><i style="background:#1A1A1A"></i></span></div>
+            <h2>Local Rebel</h2>
+            <p>Laut, jung und selbstbewusst: große Typografie, harte Konturen und leuchtende Farben für eine eigenständige lokale Marke.</p>
+            <dl class="specs">
+              <dt>Stimmung</dt><dd>Laut, jung, selbstbewusst</dd>
+              <dt>Für wen</dt><dd>Junge Mode, Teens und alle, die Haltung zeigen wollen</dd>
+              <dt>Schrift</dt><dd>Archivo Black + Inter</dd>
+              <dt>Eigenheit</dt><dd>Schwarze Konturen, Signalgelb und Rot als Flächen</dd>
+            </dl>
+            <nav class="open" aria-label="Seiten der Variante F"><a href="variante-f/">Startseite →</a><a href="variante-f/mode.html">Mode →</a><a href="variante-f/piercing.html">Piercing →</a></nav>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div class="ci-foot"><img src="shared-images/corner-logo.svg" width="172" height="74" alt="CORNER Mode.Schuh.Treff – Logo" loading="lazy"><p class="ci-tag"><b>Mode.Schuh.Treff &amp; Piercing Avalon</b><br>Hauptstraße 40 · 3270 Scheibbs · seit über 20 Jahren</p></div>
+      <p>Vorschau – nicht öffentlich gelistet. Kontaktdaten, Öffnungszeiten und Fotos sind in allen sechs Entwürfen dieselben – nur Gestaltung und Tonfall unterscheiden sich. Jede Variante hat drei Seiten: Startseite, Mode, Piercing.</p>
+    </div>
+  </footer>
+  <div class="ci-stripe" aria-hidden="true"></div>
+</body>
+</html>
